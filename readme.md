@@ -1,4 +1,6 @@
-This is a cli application for Argos Translate.
+## What
+
+This is a cli application for Argos Translate models. It is much faster and lighter than argostranslategui.
 
 ## Download Models
 
@@ -10,10 +12,11 @@ The file extension is `.argosmodel` but it's a Zip file. Extract it under for ex
 
 ```
 pip install ctranslate2 sentencepiece
+# $PWD must be repo root
 python cli.py
 ```
 
-After entering text, press Ctrl+D on an **empty line** to submit.
+After entering text, press Ctrl+D **on an empty line** to submit. (This sends EOF.)
 
 Press Ctrl+C to exit.
 
