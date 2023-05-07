@@ -29,14 +29,14 @@ def fail(s):
 
 parser = argparse.ArgumentParser(
     description="CLI for Argos Translate",
+    epilog="See readme.md for how to get models"
 )
-parser.add_argument('lang', help="pair of language codes, e.g. en_ar")
+languages = [lang.name for lang in basedir.iterdir() if not lang.name.startswith('.')]
+parser.add_argument('lang', help="pair of language codes, e.g. en_ar", choices=languages)
 args = parser.parse_args()
 
 modeldir = basedir / args.lang
 
-if not modeldir.exists():
-    fail(f"No directory: {modeldir}\nlang={args.lang}")
 try:
     main(modeldir=modeldir)
 except KeyboardInterrupt:
