@@ -2,6 +2,8 @@
 
 This is a cli application for Argos Translate models. It is much faster and lighter than argostranslategui.
 
+[![demo](https://asciinema.org/a/kwYbzYMjZqwPDtHCvRezPcXEb.svg)](https://asciinema.org/a/kwYbzYMjZqwPDtHCvRezPcXEb?autoplay=1)
+
 ## Download Models
 
 Download from [Direct Link/IPFS: JSON](https://github.com/argosopentech/argospm-index/blob/main/index.json). Also see [Web Index](https://www.argosopentech.com/argospm/index/).
