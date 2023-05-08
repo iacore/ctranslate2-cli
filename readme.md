@@ -1,3 +1,5 @@
+Disclaimer: the tokenizer treats `\n` as ` `. I do not endorse CTranslate2 for this reason.
+
 ## What
 
 This is a cli application for Argos Translate models. It is much faster and lighter than argostranslategui.
