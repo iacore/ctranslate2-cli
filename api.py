@@ -21,4 +21,4 @@ class Translator:
 if __name__ == '__main__':
     basedir = pathlib.Path('~/.local/share/argos-translate/packages').expanduser()
     t = Translator(basedir / "en_de")
-    print(t.translate("Hello"))
+    print(t.translate("Hello\nHi"))

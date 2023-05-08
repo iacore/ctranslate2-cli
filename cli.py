@@ -9,15 +9,12 @@ def main(modeldir):
 
     while True:
         print(">>>")
-        to_translate = ""
 
-        while True:
-            line = sys.stdin.readline()
-            if len(line) == 0:
-                break
-            to_translate += line
+        line = sys.stdin.readline()
+        if len(line) == 0:
+            continue
 
-        for guess in t.translate(to_translate):
+        for guess in t.translate(line):
             print("<<<")
             print(guess)
 
