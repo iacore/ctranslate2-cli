@@ -4,7 +4,7 @@ import std/[os, strformat]
 import noise
 import api
 
-const basedir = "models"
+const basedir = "~/.local/share/argos-translate/packages".expandTilde
 
 var lang: string
 var t: Translator
