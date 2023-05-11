@@ -28,8 +28,14 @@ while true:
   var translated = ""
   while true:
     if rl.readLine():
+      let line = rl.getLine()
+      if translated.len == 0:
+        if line.len > 0 and line[0] == '.':
+          let cmd = line[1..^1]
+          set_lang(cmd)
+          break
       # echo rl.getLine.repr
-      translated &= t.translate(rl.getLine)
+      translated &= t.translate(line)
       translated &= '\n'
     else:
       case rl.getKeyType
