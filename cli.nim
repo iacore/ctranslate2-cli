@@ -32,7 +32,11 @@ while true:
       if translated.len == 0:
         if line.len > 0 and line[0] == '.':
           let cmd = line[1..^1]
-          set_lang(cmd)
+          if cmd == "help":
+            echo ".help    Show this help"
+            echo ".{lang}  Set Language"
+          else:
+            set_lang(cmd)
           break
       # echo rl.getLine.repr
       translated &= t.translate(line)

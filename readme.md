@@ -12,7 +12,7 @@ Download from [Direct Link/IPFS: JSON](https://github.com/argosopentech/argospm-
 
 The file extension is `.argosmodel` but it's a Zip file. Extract it under for example `models/ar_en`.
 
-## Usage
+## Usage - Python Version
 
 ```
 pip install ctranslate2 sentencepiece
@@ -23,6 +23,20 @@ python cli.py
 After entering text, press Ctrl+D **on an empty line** to submit. (This sends EOF.)
 
 Press Ctrl+C to exit.
+
+## Usage - Nim Version
+
+```shell
+# you need a recent Nim version
+nimble install nimpy
+nimble install noise
+nim c cli.nim
+./cli
+```
+
+The usage is similar to that of the Python version.
+
+`.help` shows help. `.en_ar` changes the current language pair.
 
 ## TODO
 
