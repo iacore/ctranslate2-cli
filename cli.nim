@@ -1,6 +1,6 @@
 {.define: nimExperimentalLinenoiseExtra.}
 
-import std/[os, strformat]
+import std/[os, strformat, strutils, paths]
 import noise
 import api
 
@@ -33,11 +33,17 @@ while true:
         if line.len > 0 and line[0] == '.':
           let cmd = line[1..^1]
           if cmd == "help":
+            echo ""
             echo ".help    Show this help"
             echo ".{lang}  Set Language"
+            var files: seq[string] = @[]
+            for file in basedir.walkDir():
+              files &= file.path.extractFilename()
+            echo "Languages: " & files.join(" ")
           else:
             set_lang(cmd)
-          break
+            break
+          continue
       # echo rl.getLine.repr
       translated &= t.translate(line)
       translated &= '\n'
