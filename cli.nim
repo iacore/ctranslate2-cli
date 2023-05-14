@@ -23,8 +23,10 @@ var rl = Noise.init
 
 # https://github.com/google/sentencepiece/issues/101
 
+var i = 0
+
 while true:
-  echo &">>> {lang}"
+  echo &">>>[{i}] {lang}"
   var translated = ""
   while true:
     if rl.readLine():
@@ -56,5 +58,6 @@ while true:
       else:
         discard
 
-  echo &"<<< {lang}"
+  echo &"<<<[{i}] {lang}"
   echo translated
+  i += 1
