@@ -1,3 +1,6 @@
+# sentencepiece can't handle newline.
+# https://github.com/google/sentencepiece/issues/101
+
 {.define: nimExperimentalLinenoiseExtra.}
 
 import std/[os, strformat, strutils, paths]
@@ -17,11 +20,18 @@ proc set_lang(newlang: string) =
   lang = newlang
   t = initTranslator(langdir)
 
+proc print_languages =
+  var files: seq[string] = @[]
+  for file in basedir.walkDir():
+    files &= file.path.extractFilename()
+  echo "Languages: " & files.join(" ")
+
 set_lang("en_de")
 
 var rl = Noise.init
 
-# https://github.com/google/sentencepiece/issues/101
+
+print_languages()
 
 var i = 0
 
@@ -38,10 +48,7 @@ while true:
             echo ""
             echo ".help    Show this help"
             echo ".{lang}  Set Language"
-            var files: seq[string] = @[]
-            for file in basedir.walkDir():
-              files &= file.path.extractFilename()
-            echo "Languages: " & files.join(" ")
+            print_languages()
           else:
             set_lang(cmd)
             break
