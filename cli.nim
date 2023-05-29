@@ -6,6 +6,7 @@
 import std/[os, strformat, strutils, paths]
 import noise
 import api
+import nimpy
 
 const basedir = "~/.local/share/argos-translate/packages".expandTilde
 
@@ -17,9 +18,12 @@ proc set_lang(newlang: string) =
   if langdir.dirExists.not:
     echo &"E: no language {newlang.repr}"
     return
-  lang = newlang
-  t = initTranslator(langdir)
-
+  try:
+    let tr = initTranslator(langdir)
+    lang = newlang
+    t = tr
+  except Exception:
+    discard
 proc print_languages =
   var files: seq[string] = @[]
   for file in basedir.walkDir():
@@ -46,12 +50,18 @@ while true:
           let cmd = line[1..^1]
           if cmd == "help":
             echo ""
+            echo ".        Reverse languages"
             echo ".help    Show this help"
             echo ".{lang}  Set Language"
             print_languages()
-          else:
+          elif cmd == "":
+            break
+          elif cmd.len == 5:
             set_lang(cmd)
             break
+          else:
+            echo &"E: invalid command: {cmd}"
+            echo &"E: type .help for help"
           continue
       # echo rl.getLine.repr
       translated &= t.translate(line)
@@ -65,6 +75,11 @@ while true:
       else:
         discard
 
-  echo &"<<<[{i}] {lang}"
-  echo translated
-  i += 1
+  if translated == "":
+    let tokens = lang.split("_")
+    doAssert(tokens.len == 2)
+    set_lang(tokens[1] & "_" & tokens[0])
+  else:
+    echo &"<<<[{i}] {lang}"
+    echo translated
+    i += 1
