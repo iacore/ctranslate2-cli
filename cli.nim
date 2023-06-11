@@ -3,7 +3,7 @@
 
 {.define: nimExperimentalLinenoiseExtra.}
 
-import std/[os, strformat, strutils, paths]
+import std/[os, strformat, strutils, paths, enumerate]
 import noise
 import api
 import nimpy
@@ -30,7 +30,8 @@ proc print_languages =
     files &= file.path.extractFilename()
   echo "Languages: " & files.join(" ")
 
-set_lang("en_de")
+#set_lang("en_de")
+set_lang("de_en")
 
 var rl = Noise.init
 
@@ -64,7 +65,12 @@ while true:
             echo &"E: type .help for help"
           continue
       # echo rl.getLine.repr
-      translated &= t.translate(line)
+      let parts = line.split(".")
+      for i, part in enumerate(parts):
+        if i != parts.len - 1:
+          translated &= t.translate(part & ".")
+        else:
+          translated &= t.translate(part)
       translated &= '\n'
     else:
       case rl.getKeyType
