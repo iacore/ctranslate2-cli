@@ -65,12 +65,13 @@ while true:
             echo &"E: type .help for help"
           continue
       # echo rl.getLine.repr
-      let parts = line.split(".")
-      for i, part in enumerate(parts):
-        if i != parts.len - 1:
-          translated &= t.translate(part & ".")
-        else:
-          translated &= t.translate(part)
+      # let parts = line.split(".")
+      # for i, part in enumerate(parts):
+      #   if i != parts.len - 1:
+      #     translated &= t.translate(part & ".")
+      #   else:
+      #     translated &= t.translate(part)
+      translated &= t.translate(line)
       translated &= '\n'
     else:
       case rl.getKeyType

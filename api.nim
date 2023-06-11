@@ -15,6 +15,7 @@ proc initTranslator*(base_path: string): Translator =
 
 proc translate*(self: Translator, s: string): string =
   let tokens = self.tok.encode(s, out_type=py.str)
+  #echo tokens
   let choices = self.tr.translate_batch([tokens])[0].hypotheses
   doAssert py.len(choices).to(int) == 1
   self.tok.decode(choices[0]).to(string)
