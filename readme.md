@@ -27,6 +27,8 @@ Press Ctrl+C to exit.
 ## Usage - Nim Version
 
 ```shell
+pip install ctranslate2 sentencepiece # yes, you still need to install the python packages
+
 # you need a recent Nim version
 nimble install nimpy
 nimble install noise

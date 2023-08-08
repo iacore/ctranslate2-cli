@@ -1,0 +1,15 @@
+[project]
+name = ""
+version = ""
+description = ""
+authors = [
+    {name = "Locria Cyber"},
+]
+dependencies = [
+    "sentencepiece>=0.1.99",
+    "ctranslate2>=3.18.0",
+]
+requires-python = ">=3.11"
+readme = "README.md"
+license = {text = "MIT"}
+
