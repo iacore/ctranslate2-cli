@@ -8,9 +8,9 @@ This is a cli application for Argos Translate models. It is much faster and ligh
 
 ## Download Models
 
-Download from [Direct Link/IPFS: JSON](https://github.com/argosopentech/argospm-index/blob/main/index.json). Also see [Web Index](https://www.argosopentech.com/argospm/index/).
+HTTP and IPFS links of the models can be found at [Direct Link/IPFS: JSON](https://github.com/argosopentech/argospm-index/blob/main/index.json). The directory can also be found at [the Web argos Model Index](https://www.argosopentech.com/argospm/index/).
 
-The file extension is `.argosmodel` but it's a Zip file. Extract it under for example `models/ar_en`.
+The model file downloaded has file extension `.argosmodel`, but it's a Zip file. Extract it under `~/.local/share/argos-translate/packages`. For example, for `ar_en`, extract the zip file to `~/.local/share/argos-translate/packages/ar_en` .
 
 ## Usage - Python Version
 
